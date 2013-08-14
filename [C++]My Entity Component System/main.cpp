@@ -1,6 +1,3 @@
-#include <iostream>
-#include <type_traits>
-
 #include "Components/PositionComponent.h"
 #include "Components/VelocityComponent.h"
 #include "Systems/MovementSystem.h"
