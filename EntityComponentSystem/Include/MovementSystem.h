@@ -2,8 +2,8 @@
 #define MOVEMENTSYSTEM_H
 
 #include "System.h"
-#include "../Components/PositionComponent.h"
-#include "../Components/VelocityComponent.h"
+#include "PositionComponent.h"
+#include "VelocityComponent.h"
 
 #include <iostream>
 

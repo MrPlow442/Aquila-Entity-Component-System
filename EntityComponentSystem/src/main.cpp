@@ -1,7 +1,7 @@
-#include "Components/PositionComponent.h"
-#include "Components/VelocityComponent.h"
-#include "Systems/MovementSystem.h"
-#include "World.h"
+#include "../Include/PositionComponent.h"
+#include "../Include/VelocityComponent.h"
+#include "../Include/MovementSystem.h"
+#include "../Include/World.h"
 
 int main() 
 {
