@@ -11,23 +11,19 @@ class World;
 class SystemBase
 {
 protected:
-	World& m_owner;
-	EntityManager& m_entityManager;
 	std::bitset<64> m_lockBits;
 	bool m_enabled;
 	template<typename Component> void addComponentType();
-	virtual void updateEntity(ComponentExtractor& extractor) = 0;
-	virtual void drawEntity(ComponentExtractor& extractor) {}
 public:
-	SystemBase(World& owner);
-	void update();
-	void draw();
+	SystemBase();
+	virtual void update(ComponentExtractor& extractor) = 0;
+	virtual void draw(ComponentExtractor& extractor) {}
 
 	void enable();
 	void disable();
 	bool enabled();
 
-	std::bitset<64>& getLockBits();
+	std::bitset< 64 >& getLockBits();
 	virtual int getSystemType() = 0;
 };
 
@@ -36,7 +32,7 @@ template<class T> class System : public SystemBase
 protected:
 	static int m_type;
 public:
-	System(World& owner) : SystemBase(owner) {}
+	System() {}
 	static int systemType() { return m_type; }
 	int getSystemType() { return T::m_type; }
 };

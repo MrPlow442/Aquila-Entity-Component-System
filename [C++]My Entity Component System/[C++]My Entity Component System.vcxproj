@@ -77,14 +77,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Components\Component.h" />
+    <ClInclude Include="Components\PositionComponent.h" />
+    <ClInclude Include="Components\VelocityComponent.h" />
     <ClInclude Include="Entity\ComponentExtractor.h" />
     <ClInclude Include="Entity\Entity.h" />
     <ClInclude Include="Entity\EntityManager.h" />
     <ClInclude Include="Systems\MovementSystem.h" />
-    <ClInclude Include="Components\PositionComponent.h" />
     <ClInclude Include="Systems\System.h" />
     <ClInclude Include="World.h" />
-    <ClInclude Include="Components\VelocityComponent.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Entity\ComponentExtractor.cpp" />

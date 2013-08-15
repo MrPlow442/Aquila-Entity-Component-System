@@ -16,7 +16,7 @@ public:
 		addComponentType<VelocityComponent>();
 	}
 
-	void updateEntity(ComponentExtractor& extractor) override
+	void update(ComponentExtractor& extractor) override
 	{
 		Component<PositionComponent>::Ptr pos = extractor.getComponent<PositionComponent>();
 		Component<VelocityComponent>::Ptr vel = extractor.getComponent<VelocityComponent>();

@@ -1,17 +1,39 @@
 #ifndef ENTITYMANAGER_H
 #define ENTITYMANAGER_H
 
+#include "../Components/Component.h"
+#include "Entity.h"
+
 #include <vector>
 #include <memory>
 #include <iostream>
 
-#include "../Components/Component.h"
-#include "Entity.h"
-
 typedef std::unique_ptr< Entity > EntityPtr;
-
+/**
+ * EntityManager
+ * Takes care of creation and destruction of entities
+ */
 class EntityManager
 {
+public:
+	EntityManager();
+	~EntityManager();
+
+	/**
+	 * Creates a new entity and adds it to the entity list
+	 * returns a reference to the newly created entity
+	 */
+	Entity& createEntity();
+
+	/**
+	 * Destroy the given entity
+	 */
+	void destroyEntity( Entity& entity );
+
+	/**
+	 * Retrieves a list of currently active entities
+	 */
+	std::vector< EntityPtr >& getEntityList();
 private:
 	class IdentifierPool
 	{
@@ -41,12 +63,5 @@ private:
 private:
 	std::vector< EntityPtr > m_entities;
 	IdentifierPool m_identifierPool;
-public:
-	EntityManager();
-	~EntityManager();
-
-	Entity& createEntity();
-	void destroyEntity( Entity& entity );
-	std::vector< EntityPtr >& getEntityList();
 };
 #endif // ENTITYMANAGER_H

@@ -21,7 +21,17 @@ void World::update()
 {
 	for(auto& ecsystem : m_systems)
 	{
-		ecsystem.second->update();
+		if(ecsystem.second->enabled())
+		{
+			std::bitset< 64 >& lockbits = ecsystem.second->getLockBits();
+			for( auto& entity : m_entityManager.getEntityList() )
+			{
+				if( (entity->getKeyBits() & lockbits) == lockbits )
+				{
+					ecsystem.second->update( entity->getRelevantComponents( lockbits ) );
+				}
+			}
+		}
 	}
 }
 
@@ -29,6 +39,16 @@ void World::draw()
 {
 	for(auto& ecsystem : m_systems)
 	{
-		ecsystem.second->draw();
+		if(ecsystem.second->enabled())
+		{
+			std::bitset< 64 >& lockbits = ecsystem.second->getLockBits();
+			for( auto& entity : m_entityManager.getEntityList() )
+			{
+				if( (entity->getKeyBits() & lockbits) == lockbits )
+				{
+					ecsystem.second->draw( entity->getRelevantComponents( lockbits ) );
+				}
+			}
+		}
 	}
 }

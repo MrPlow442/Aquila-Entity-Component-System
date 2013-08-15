@@ -1,23 +1,38 @@
 #include "ComponentExtractor.h"
+#include <algorithm>
 
 
 ComponentExtractor::ComponentExtractor() {}
 
 ComponentExtractor::~ComponentExtractor() {}
 
-ComponentExtractor::ComponentExtractor( ComponentExtractor&& other )
+void swap( ComponentExtractor& first, ComponentExtractor& second )
 {
-	m_relevantComponentMap = other.m_relevantComponentMap;
-	other.m_relevantComponentMap.clear();
+	using std::swap;
+	swap(first.m_relevantComponentMap, second.m_relevantComponentMap);
 }
 
-ComponentExtractor& ComponentExtractor::operator=( ComponentExtractor&& other )
+ComponentExtractor::ComponentExtractor( ComponentExtractor&& other )
 {
-	if(this != &other)
-	{
-		m_relevantComponentMap.clear();
-		m_relevantComponentMap = other.m_relevantComponentMap;
-		other.m_relevantComponentMap.clear();
-	}
+	swap(*this, other);
+}
+
+ComponentExtractor& ComponentExtractor::operator=( ComponentExtractor other )
+{
+	swap(*this, other);
+
 	return *this;
 }
+
+//ComponentExtractor& ComponentExtractor::operator=( ComponentExtractor&& other )
+//{
+//	if(this != &other)
+//	{
+//		m_relevantComponentMap.clear();
+//		m_relevantComponentMap = other.m_relevantComponentMap;
+//		other.m_relevantComponentMap.clear();
+//	}
+//	return *this;
+//}
+
+

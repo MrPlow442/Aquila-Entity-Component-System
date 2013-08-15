@@ -2,31 +2,8 @@
 #include "../World.h"
 
 
-SystemBase::SystemBase( World& owner ) :
-	m_owner(owner),
-	m_entityManager(owner.getEntityManager()),
+SystemBase::SystemBase() :
 	m_enabled(true) {}
-
-void SystemBase::update()
-{
-	auto& entityList = m_entityManager.getEntityList();
-	for(auto& ent : entityList)
-	{
-		if( (ent->getKeyBits() & getLockBits()) == getLockBits() )
-			updateEntity( ent->getRelevantComponents( m_lockBits ) );
-	}
-}
-
-
-void SystemBase::draw()
-{
-	auto& entityList = m_entityManager.getEntityList();
-	for(auto& ent : entityList)
-	{
-		if( (ent->getKeyBits() & getLockBits()) == getLockBits() )
-			drawEntity( ent->getRelevantComponents( m_lockBits ) );
-	}
-}
 
 
 std::bitset<64>& SystemBase::getLockBits()
