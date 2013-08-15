@@ -1,7 +1,7 @@
 #ifndef COMPONENTEXTRACTOR_H
 #define COMPONENTEXTRACTOR_H
 
-#include "../Components/Component.h"
+#include "Component.h"
 #include "Entity.h"
 
 #include <iostream>

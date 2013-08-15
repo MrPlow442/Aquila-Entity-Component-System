@@ -2,8 +2,9 @@
 #define SYSTEM_H
 
 #include <bitset>
-#include "../Components/Component.h"
-#include "../Entity/ComponentExtractor.h"
+
+#include "Component.h"
+#include "ComponentExtractor.h"
 
 class SystemBase
 {

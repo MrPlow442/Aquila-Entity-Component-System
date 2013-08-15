@@ -1,5 +1,5 @@
 #include <algorithm>
-#include "World.h"
+#include "../Include/World.h"
 
 World::World() {}
 
@@ -15,10 +15,12 @@ void World::destroyEntity( Entity& entity )
 {
 	m_identifierPool.checkIn(entity.getId());
 
-	m_entities.erase(std::remove_if(m_entities.begin(), m_entities.end(), 
-		[&, this](EntityPtr& m_entity) {
+	m_entities.erase(
+		std::remove_if(m_entities.begin(), m_entities.end(), 
+		[&, this](EntityPtr& m_entity) 
+		{
 			return m_entity.get() == &entity;
-	}), m_entities.end());
+		}), m_entities.end());
 }
 
 void World::update()

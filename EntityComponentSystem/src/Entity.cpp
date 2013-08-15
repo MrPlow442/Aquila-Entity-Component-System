@@ -1,6 +1,6 @@
-#include "Entity.h"
-#include "ComponentExtractor.h"
-#include "../Components/Component.h"
+#include "../Include/Entity.h"
+#include "../Include/ComponentExtractor.h"
+#include "../Include/Component.h"
 
 Entity::Entity(unsigned int id) 
 {
