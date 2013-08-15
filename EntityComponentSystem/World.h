@@ -2,12 +2,13 @@
 #define WORLD_H
 
 #include "Systems/System.h"
-#include "Entity/EntityManager.h"
 
 #include <unordered_map>
 #include <memory>
+#include <functional>
 
 typedef std::unique_ptr< SystemBase > SystemPtr;
+typedef std::unique_ptr< Entity > EntityPtr;
 
 /**
  * World
@@ -20,8 +21,6 @@ class World
 {
 public:
 	World();
-	
-	EntityManager& getEntityManager();
 
 	void update();
 	void draw();
@@ -33,11 +32,40 @@ public:
 	template<typename T> void removeSystem();
 	template<typename T> void disableSystem();
 	template<typename T> void enableSystem();
-private:
-	template<typename T> bool systemExists();
 
+private: 
+	// Nested class for entity id distribution
+	class IdentifierPool
+	{
+	private:
+		std::vector<unsigned int> m_idPool;
+		unsigned int m_nextId;
+	public:
+		IdentifierPool() : m_nextId(0) {}
+		~IdentifierPool() {}
+
+		void checkIn( unsigned int id )
+		{
+			m_idPool.push_back(id);
+		}
+
+		int checkOut()
+		{
+			if(!m_idPool.empty())
+			{
+				unsigned int last = m_idPool.back();
+				m_idPool.pop_back();
+				return last;
+			}
+			return m_nextId++;
+		}
+	};
+	// Private methods
+	template<typename T> bool systemExists();
+	// Data
 	std::unordered_map< unsigned int, SystemPtr > m_systems;
-	EntityManager m_entityManager;
+	std::vector< EntityPtr > m_entities;
+	IdentifierPool m_identifierPool;
 };
 
 template<typename T> bool World::systemExists()

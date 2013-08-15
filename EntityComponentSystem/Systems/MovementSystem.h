@@ -10,7 +10,7 @@
 class MovementSystem : public System<MovementSystem>
 {
 public:
-	MovementSystem(World& systemManager) : System(systemManager)
+	MovementSystem()
 	{
 		addComponentType<PositionComponent>();
 		addComponentType<VelocityComponent>();

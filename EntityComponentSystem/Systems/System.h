@@ -3,10 +3,7 @@
 
 #include <bitset>
 #include "../Components/Component.h"
-#include "../Entity/EntityManager.h"
 #include "../Entity/ComponentExtractor.h"
-
-class World;
 
 class SystemBase
 {
