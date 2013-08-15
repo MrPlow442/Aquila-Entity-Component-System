@@ -5,7 +5,7 @@ First attempt at creating an Entity Component System.
 
 Using the system:
 
-<code>
+<pre>
 	World world;
 	
 	Entity& ent = world.createEntity();
@@ -18,22 +18,22 @@ Using the system:
 	{
 		world.update();
 	}
-</code>
+</pre>
 
 Creating a component:
 
-<code>
+<pre>
 	struct PositionComponent : public Component<PositionComponent>
 	{
 	public:
 		float m_x, m_y;
 		PositionComponent(float x, float y) : m_x(x), m_y(y) {}
 	};
-</code>
+</pre>
 
 Creating a system:
 
-<code>
+<pre>
 	class MovementSystem : public System<MovementSystem>
 	{
 	public:
@@ -54,4 +54,4 @@ Creating a system:
 			std::cout << pos->m_x << " " << pos->m_y << std::endl;
 		}
 	};
-</code>
+</pre>
