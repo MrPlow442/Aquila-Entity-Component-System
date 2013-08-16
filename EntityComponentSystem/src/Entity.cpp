@@ -1,6 +1,6 @@
-#include "../Include/Entity.h"
-#include "../Include/ComponentExtractor.h"
-#include "../Include/Component.h"
+#include "../Aquila/Include/Entity.h"
+#include "../Aquila/Include/ComponentExtractor.h"
+#include "../Aquila/Include/Component.h"
 
 namespace aq
 {

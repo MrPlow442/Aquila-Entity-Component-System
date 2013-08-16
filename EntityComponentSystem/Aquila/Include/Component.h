@@ -22,7 +22,7 @@ namespace aq
 	* Component
 	* The actual component class
 	* All components must inherit this class using CRTP 
-	* ex. struct PositionComponent : Component<PositionComponent>
+	* ex. struct PositionComponent : Component< PositionComponent >
 	*/
 	template< class T > struct Component : public ComponentBase
 	{

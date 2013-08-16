@@ -1,5 +1,5 @@
 #include <algorithm>
-#include "../Include/World.h"
+#include "../Aquila/Include/World.h"
 
 namespace aq
 {
@@ -23,6 +23,16 @@ namespace aq
 			{
 				return m_entity.get() == &entity;
 			}), m_entities.end() );
+	}
+
+
+	void World::addSystem( SystemBase* system )
+	{
+		SystemPtr temp(system);
+		if( m_systems.find( temp->getSystemType() ) == m_systems.end() )
+		{
+			m_systems.insert( std::make_pair( temp->getSystemType(), std::move(temp) ) );
+		}
 	}
 
 	void World::update()

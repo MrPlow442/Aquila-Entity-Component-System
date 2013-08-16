@@ -47,7 +47,12 @@ namespace aq
 		/**
 		 * Creates a new system of type T
 		 */
-		template< typename T > void createSystem();
+		/*template< typename T > void createSystem();*/
+
+		/**
+		 * Adds a new system to this world
+		 */
+		void addSystem( SystemBase* system );
 
 		/**
 		 * Removes a system of type T
@@ -104,14 +109,14 @@ namespace aq
 		return m_systems.find( T::systemType() ) !=  m_systems.end();
 	}
 
-	template< typename T > void World::createSystem()
-	{
-		static_assert( std::is_base_of< SystemBase, T >::value, "Supplied Type is not derived from System");
-		if( !systemExists< T >() )
-		{
-			m_systems.insert( std::make_pair( T::systemType(), std::move( SystemPtr( new T() ) ) ) );
-		}
-	}
+	//template< typename T > void World::createSystem()
+	//{
+	//	static_assert( std::is_base_of< SystemBase, T >::value, "Supplied Type is not derived from System");
+	//	if( !systemExists< T >() )
+	//	{
+	//		m_systems.insert( std::make_pair( T::systemType(), std::move( SystemPtr( new T() ) ) ) );
+	//	}
+	//}
 
 
 	template< typename T > void World::enableSystem()

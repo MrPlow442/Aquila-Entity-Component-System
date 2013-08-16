@@ -15,19 +15,19 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Include\Entity.h">
+    <ClInclude Include="Aquila\Include\Component.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Include\ComponentExtractor.h">
+    <ClInclude Include="Aquila\Include\ComponentExtractor.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Include\Component.h">
+    <ClInclude Include="Aquila\Include\Entity.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Include\System.h">
+    <ClInclude Include="Aquila\Include\System.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Include\World.h">
+    <ClInclude Include="Aquila\Include\World.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
