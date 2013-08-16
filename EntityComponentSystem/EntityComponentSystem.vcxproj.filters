@@ -24,10 +24,10 @@
     <ClInclude Include="Aquila\Include\Entity.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Aquila\Include\System.h">
+    <ClInclude Include="Aquila\Include\World.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Aquila\Include\World.h">
+    <ClInclude Include="Aquila\Include\System.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
