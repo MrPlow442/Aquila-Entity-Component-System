@@ -6,13 +6,13 @@ First attempt at creating an Entity Component System.
 Using the system:
 
 `````C++
-	World world;
+	aq::World world;
 	
-	Entity& ent = world.createEntity();
+	aq::Entity& ent = world.createEntity();
 	ent.addComponent(new PositionComponent(0,0));
 	ent.addComponent(new VelocityComponent(1,2));
 	
-	world.createSystem<MovementSystem>();
+	world.addSystem( new MovementSystem() );
 	
 	for(auto i = 0u; i < 10; ++i)
 	{
@@ -39,11 +39,11 @@ Creating a system:
 	public:
 		MovementSystem()
 		{
-			addComponentType<PositionComponent>();
-			addComponentType<VelocityComponent>();
+			registerComponentType<PositionComponent>();
+			registerComponentType<VelocityComponent>();
 		}
 	
-		void update(ComponentExtractor& extractor) override
+		void update(ComponentProvider& extractor) override
 		{
 			Component<PositionComponent>::Ptr pos = extractor.getComponent<PositionComponent>();
 			Component<VelocityComponent>::Ptr vel = extractor.getComponent<VelocityComponent>();
