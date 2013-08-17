@@ -8,6 +8,7 @@ namespace aq
 	/**
 	 * ComponentBase 
 	 * Base for polymorphism
+	 * Do not inherit this class
 	 */
 	struct ComponentBase
 	{

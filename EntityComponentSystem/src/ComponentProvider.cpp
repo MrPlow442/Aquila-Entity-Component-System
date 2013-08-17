@@ -1,24 +1,24 @@
-#include "../Aquila/Include/ComponentExtractor.h"
+#include "..\Aquila\Include\ComponentProvider.h"
 #include <algorithm>
 
 namespace aq
 {
-	ComponentExtractor::ComponentExtractor() {}
+	ComponentProvider::ComponentProvider() {}
 
-	ComponentExtractor::~ComponentExtractor() {}
+	ComponentProvider::~ComponentProvider() {}
 
-	void swap( ComponentExtractor& first, ComponentExtractor& second )
+	void swap( ComponentProvider& first, ComponentProvider& second )
 	{
 		using std::swap;
 		swap(first.m_relevantComponentMap, second.m_relevantComponentMap);
 	}
 
-	ComponentExtractor::ComponentExtractor( ComponentExtractor&& other )
+	ComponentProvider::ComponentProvider( ComponentProvider&& other )
 	{
 		swap(*this, other);
 	}
 
-	ComponentExtractor& ComponentExtractor::operator=( ComponentExtractor other )
+	ComponentProvider& ComponentProvider::operator=( ComponentProvider other )
 	{
 		swap(*this, other);
 

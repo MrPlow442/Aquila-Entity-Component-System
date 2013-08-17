@@ -1,5 +1,5 @@
-#ifndef COMPONENTEXTRACTOR_H
-#define COMPONENTEXTRACTOR_H
+#ifndef COMPONENTPROVIDER_H
+#define COMPONENTPROVIDER_H
 
 #include "Component.h"
 #include "Entity.h"
@@ -11,21 +11,20 @@
 namespace aq
 {
 	/**
-	 * ComponentExtractor
+	 * ComponentProvider
 	 * class used to contain and provide access to requested components
-	 * Note: Probably should have named this ComponentProvider instead
 	 */
 	typedef std::shared_ptr< ComponentBase > BaseComponentPtr;
-	class ComponentExtractor
+	class ComponentProvider
 	{
 	public:
-		ComponentExtractor();
-		~ComponentExtractor(); 
+		ComponentProvider();
+		~ComponentProvider(); 
 
-		friend void swap( ComponentExtractor& first, ComponentExtractor& second );
-		ComponentExtractor( ComponentExtractor&& other );
-		/*ComponentExtractor& operator=( ComponentExtractor&& other );*/
-		ComponentExtractor& operator=( ComponentExtractor other );
+		friend void swap( ComponentProvider& first, ComponentProvider& second );
+		ComponentProvider( ComponentProvider&& other );
+		/*ComponentProvider& operator=( ComponentProvider&& other );*/
+		ComponentProvider& operator=( ComponentProvider other );
 
 		/**
 		 * Attempts to retrieve component of type T
@@ -38,7 +37,7 @@ namespace aq
 		std::unordered_map< unsigned int , BaseComponentPtr > m_relevantComponentMap;
 	};
 
-	template< typename T > typename std::shared_ptr< T > ComponentExtractor::getComponent()
+	template< typename T > typename std::shared_ptr< T > ComponentProvider::getComponent()
 	{
 		static_assert( std::is_base_of< ComponentBase, T >::value, "Supplied Type is not derived from Component");
 		try
@@ -53,4 +52,4 @@ namespace aq
 		}
 	}
 }
-#endif // COMPONENTEXTRACTOR_H
+#endif // COMPONENTPROVIDER_H

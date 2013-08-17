@@ -79,13 +79,13 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Aquila\Include\Component.h" />
-    <ClInclude Include="Aquila\Include\ComponentExtractor.h" />
+    <ClInclude Include="Aquila\Include\ComponentProvider.h" />
     <ClInclude Include="Aquila\Include\Entity.h" />
     <ClInclude Include="Aquila\Include\System.h" />
     <ClInclude Include="Aquila\Include\World.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\ComponentExtractor.cpp" />
+    <ClCompile Include="src\ComponentProvider.cpp" />
     <ClCompile Include="src\Entity.cpp" />
     <ClCompile Include="src\System.cpp" />
     <ClCompile Include="src\World.cpp" />

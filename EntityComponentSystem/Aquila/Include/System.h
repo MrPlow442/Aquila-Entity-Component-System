@@ -4,7 +4,7 @@
 #include <bitset>
 
 #include "Component.h"
-#include "ComponentExtractor.h"
+#include "ComponentProvider.h"
 
 namespace aq
 {
@@ -22,7 +22,7 @@ namespace aq
 		/** 
 		 * Registers a component type with the system
 		 */
-		template< typename Component > void addComponentType();
+		template< typename Component > void registerComponentType();
 	public:
 		SystemBase();
 
@@ -30,13 +30,13 @@ namespace aq
 		 * Updates the system
 		 * This method must be implemented
 		 */
-		virtual void update( ComponentExtractor& extractor ) = 0;
+		virtual void update( ComponentProvider& extractor ) = 0;
 
 		/**
 		 * Draws the contents of the system
 		 * This method can be implemented if rendering is required
 		 */
-		virtual void draw( ComponentExtractor& extractor ) {}
+		virtual void draw( ComponentProvider& extractor ) {}
 
 		/**
 		 * Makes system visible to the world
@@ -89,7 +89,7 @@ namespace aq
 	static int nextSystemType = 0;
 	template< typename T > int System< T >::m_type( nextSystemType++ );
 
-	template< typename Component > void SystemBase::addComponentType()
+	template< typename Component > void SystemBase::registerComponentType()
 	{
 		m_lockBits.set( Component::type() );
 	}

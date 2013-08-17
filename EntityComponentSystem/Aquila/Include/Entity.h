@@ -9,7 +9,7 @@
 
 namespace aq
 {
-	class ComponentExtractor;
+	class ComponentProvider;
 
 	struct ComponentBase;
 
@@ -36,7 +36,7 @@ namespace aq
 		/**
 		 * Retrieves a special map of components which match systems lock bits
 		 */
-		ComponentExtractor getRelevantComponents( std::bitset< 64 >& lockBits );
+		ComponentProvider getRelevantComponents( std::bitset< 64 >& lockBits );
 
 		/**
 		 * Attempts to retrieve component of type T

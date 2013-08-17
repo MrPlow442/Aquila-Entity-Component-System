@@ -1,6 +1,6 @@
-#include "../Aquila/Include/Entity.h"
-#include "../Aquila/Include/ComponentExtractor.h"
-#include "../Aquila/Include/Component.h"
+#include "..\Aquila\Include\Entity.h"
+#include "..\Aquila\Include\ComponentProvider.h"
+#include "..\Aquila\Include\Component.h"
 
 namespace aq
 {
@@ -31,18 +31,18 @@ namespace aq
 		return m_keyBits;
 	}
 
-	ComponentExtractor Entity::getRelevantComponents( std::bitset<64>& lockBits )
+	ComponentProvider Entity::getRelevantComponents( std::bitset< 64 >& lockBits )
 	{
-		ComponentExtractor extractor;
+		ComponentProvider provider;
 
-		for(auto& mapItem : m_componentMap)
+		for( auto& mapItem : m_componentMap )
 		{
 			auto key = mapItem.first;
-			if(lockBits.test(key))
+			if( lockBits.test( key ) )
 			{
-				extractor.m_relevantComponentMap.insert( std::make_pair( key, mapItem.second));
+				provider.m_relevantComponentMap.insert( std::make_pair( key, mapItem.second) );
 			}
 		}
-		return extractor;
+		return provider;
 	}
 }
